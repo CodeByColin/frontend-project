@@ -62,3 +62,47 @@ function buildImages(imgArr) {
   // Update local storage with the current gallery images
   saveGalleryToLocalStorage();
 }
+
+// Load saved gallery images from local storage on page load
+loadGalleryFromLocalStorage();
+
+// Event listener for adding images to the gallery
+imageContainer.addEventListener('click', function (e) {
+  if (e.target && e.target.nodeName === 'IMG') {
+    const imgClone = e.target.cloneNode(true);
+    imgClone.onclick = removeImageFromGallery;
+    galleryImages.appendChild(imgClone);
+
+    // Update local storage when adding an image to the gallery
+    saveGalleryToLocalStorage();
+  }
+});
+
+// Remove an image from the gallery
+function removeImageFromGallery() {
+  galleryImages.removeChild(this);
+
+  // Update local storage when removing an image from the gallery
+  saveGalleryToLocalStorage();
+}
+
+// Save the gallery images to local storage
+function saveGalleryToLocalStorage() {
+  const galleryImagesData = [];
+  const galleryImageElements = galleryImages.getElementsByTagName('img');
+  for (const img of galleryImageElements) {
+    galleryImagesData.push({ src: img.src });
+  }
+  localStorage.setItem('galleryImages', JSON.stringify(galleryImagesData));
+}
+
+// Load saved gallery images from local storage
+function loadGalleryFromLocalStorage() {
+  const savedGalleryImages = JSON.parse(localStorage.getItem('galleryImages')) || [];
+  savedGalleryImages.forEach(function (imageData) {
+    const imgElement = document.createElement('img');
+    imgElement.src = imageData.src;
+    imgElement.onclick = removeImageFromGallery;
+    galleryImages.appendChild(imgElement);
+  });
+}
