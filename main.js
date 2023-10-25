@@ -7,8 +7,10 @@ const cat = document.getElementById('catbtn');
 const catInput = document.getElementById('catSearch');
 const imageContainer = document.getElementById('image-container');
 const galleryImages = document.getElementById('gallery-images');
+const toggle = document.getElementById('toggle')
+const gallery = document.getElementById('gallery')
 
-let inputValue;
+let inputValue
 let imgArr;
 
 // Event listeners for animal buttons
@@ -106,3 +108,16 @@ function loadGalleryFromLocalStorage() {
     galleryImages.appendChild(imgElement);
   });
 }
+
+toggle.addEventListener('click', function () {
+    if(gallery.classList.contains('hidden')) {
+        gallery.classList.remove('hidden');
+        imageContainer.classList.remove('hidden');
+    }else{
+        gallery.classList.add('hidden')
+        imageContainer.classList.add('hidden')
+    }
+})
+
+
+

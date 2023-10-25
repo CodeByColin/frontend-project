@@ -2,20 +2,24 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background: url('background.jpg');
+    text-align: center;
   }
+  
   
   #Heading {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 60px;
-    font-size: 40px;
+    font-size: 60px;
   }
 
   #Instructions {
     text-align: center;
     padding:  20px;
     text-decoration:underline;
+    color: white
   }
 
   #button-container {
@@ -65,10 +69,13 @@ body {
     margin: 20px;
     border: 1px solid #ccc;
     background-color: #f7f7f7;
+    color: white
   }
 
-  #gallery h2 {
-    font-size: 20px;;
+  #style {
+    font-size: 40px;
+    color:white;
+    text-decoration:underline
   }
 
   #gallery-images img {
@@ -78,4 +85,4 @@ body {
     cursor: pointer;
     border: 1px solid #ccc;
   }
-  
+
