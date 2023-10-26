@@ -3,6 +3,21 @@ const pokeBtn = document.getElementById('btn');
 const pokeContainer = document.getElementById('poke_container');
 let pokemonQueue = [];
 
+const pokeVideoContainer = document.getElementById('pokeVideoContainer');
+const closePokeVideo = document.getElementById('closePokeVideo');
+
+function openPokeVideo() {
+  pokeVideoContainer.style.display = 'block';
+}
+
+function closePokeVideoContainer() {
+  pokeVideoContainer.style.display = 'none';
+}
+
+window.addEventListener('load', openPokeVideo);
+
+closePokeVideo.addEventListener('click', closePokeVideoContainer);
+
 pokeBtn.addEventListener('click', function() {
   const chosenPoke = inputValue.value;
   getPokemon(chosenPoke);
