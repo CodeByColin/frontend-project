@@ -55,7 +55,6 @@ function buildPokeEntry(obj) {
   const html = `
     <div class="pokemon">
       <img id="img" src="${obj.sprites.front_default}" alt="${obj.name}">
-      <p>${obj.name.charAt(0).toUpperCase() + obj.name.slice(1)}</p>
     `;
   pokeContainer.insertAdjacentHTML('beforeend', html);
 
@@ -70,11 +69,13 @@ const closePopup = document.getElementById('closePopup');
 const popupContent = document.getElementById('popupContent');
 
 function openPopup(pokemonData) {
+    console.log(pokemonData)
   const html = `
     <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
-    <p>Name: ${pokemonData.name}</p>
+    <p>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</p>
     <p>Weight: ${pokemonData.weight} lb.</p>
     <p>Height: ${pokemonData.height} in"</p>
+    <p>Type: ${pokemonData.types[0].type.name.charAt(0).toUpperCase() + pokemonData.types[0].type.name.slice(1)}</p>
   `;
 
   popupContent.innerHTML = html;
