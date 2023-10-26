@@ -55,6 +55,10 @@ kalosBtn.addEventListener('click', () => displayPokemonByRegion('kalos'));
 alolaBtn.addEventListener('click', () => displayPokemonByRegion('alola'));
 galarBtn.addEventListener('click', () => displayPokemonByRegion('galar'));
 paldeaBtn.addEventListener('click', () => displayPokemonByRegion('paldea'));
+allBtn.addEventListener('click', function() {
+    clearPokemon();
+    allPokemon();
+})
 
 // Function to display Pokemon from a specific region
 function displayPokemonByRegion(region) {
@@ -117,6 +121,7 @@ function displayPokemonByRegion(region) {
 function getPokemon(chosenPoke) {
   $.get(`https://pokeapi.co/api/v2/pokemon/${chosenPoke}`, function(data) {
     const pokemonData = data;
+    clearPokemon();
     buildPokeEntry(pokemonData);
     processNextPokemon();
   });
@@ -157,11 +162,11 @@ const popupContent = document.getElementById('popupContent');
 function openPopup(pokemonData) {
     console.log(pokemonData)
   const html = `
-    <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
-    <p>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</p>
-    <p>Weight: ${pokemonData.weight} lb.</p>
-    <p>Height: ${pokemonData.height} in"</p>
-    <p>Type: ${pokemonData.types[0].type.name.charAt(0).toUpperCase() + pokemonData.types[0].type.name.slice(1)}</p>
+    <img id="bigPoke" src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+    <p id="text">${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</p>
+    <p id="text">Weight: ${pokemonData.weight} lb.</p>
+    <p id="text">Height: ${pokemonData.height} in"</p>
+    <p id="text">Type: ${pokemonData.types[0].type.name.charAt(0).toUpperCase() + pokemonData.types[0].type.name.slice(1)}</p>
   `;
 
   popupContent.innerHTML = html;
