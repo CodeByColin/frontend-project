@@ -31,7 +31,7 @@ cat.addEventListener('click', function () {
 
 // Fetch data and build images
 function fetchDataAndBuildImages(animalType) {
-  $.get(`http://shibe.online/api/${animalType}?count=${inputValue}`, function (data) {
+  $.get(`http://shibe.online/api/${animalType}?count=${inputValue}&urls=true&httpsUrls=true`, function (data) {
     imgArr = data;
     buildImages(imgArr);
   });
@@ -109,15 +109,7 @@ function loadGalleryFromLocalStorage() {
   });
 }
 
-toggle.addEventListener('click', function () {
-    if(gallery.classList.contains('hidden')) {
-        gallery.classList.remove('hidden');
-        imageContainer.classList.remove('hidden');
-    }else{
-        gallery.classList.add('hidden')
-        imageContainer.classList.add('hidden')
-    }
-})
+
 
 
 
